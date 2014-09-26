@@ -1,0 +1,19 @@
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+|                           -- TODO --                            |
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+- Fuzz the (symbol) Hash Table(s) (SHT_HASH | SHT_GNU_HASH)
+  These rules are marked in red in docs/Melkor_Fuzzing_Rules.pdf
+
+- Fuzz the debug information (DWARF format)
+  This rule is marked in orange in docs/Melkor_Fuzzing_Rules.pdf
+  An example of a malformed DWARF payload can be seen at:
+  http://www.exploit-db.com/exploits/23523/
+
+- Smart fuzzing of SHT_REL or SHT_RELA based on the relocation scheme used
+  More info: http://www.mindfruit.co.uk/2012/06/relocations-relocations.html
+
+- Fuzz uncommon data structs in /usr/include/elf.h such as Elf*_Syminfo,
+  Elf*_Verdef, etc.
+
+- Port to *BSD

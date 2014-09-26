@@ -1,0 +1,26 @@
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+|                           -- BUGS --                            |
+ ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+- No boundary checkings in the whole codebase. If a malformed ELF is 
+  supplied, it'll definitely segfault.
+
+  It's supposed to be fed with non-malformed ELFs (templates), hence,
+  you can use it as a test subject too ;-), fuzzing the fuzzer,
+  meta-fuzzing, inception fuzzing, whatever...
+
+  Bugs (overflows and off-by-one's) while treating strings and pointers
+  with functions like strncpy(), strcat(), memcpy(), strlen(), etc. etc.
+
+- The data structures are adapted at compilation time based on the CPU
+  where Melkor is running by checking the __i386__ and __x86_64__ macros,
+  not by the ELF file to be used as a template (HDR.e_ident[EI_CLASS]).
+
+  I've been through this before and I solved it by wrapping many data
+  structures and assignations in macros to automatically adapt them 
+  based on the architecture detected in HDR.e_ident[EI_CLASS]. However,
+  it adds more complexity to the code. You can see it at:
+  http://www.brainoverflow.org/code/dissector.c
+
+  So, if you want to fuzz a 32-bit ELF file, you need to compile and run
+  Melkor in a 32-bit OS, and vice versa for 64-bit files.
