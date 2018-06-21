@@ -7,6 +7,10 @@
 
 #include "melkor.h"
 
+#ifdef BSD
+#define DT_NUM 34
+#endif
+
 #define N_RULES_DYN 18 // Total of fuzzing rules defined for this metadata type
 
 // Array of function pointers. Index zero won't be used. The fuzzing rules start from index 1

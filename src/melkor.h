@@ -89,8 +89,11 @@ int PAGESIZE; // Set at runtime with getpagesize() in melkor.c
 #define Elf_Sxword Elf32_Sxword
 #define Elf_Addr Elf32_Addr
 #define Elf_Off Elf32_Off
+#ifdef BSD
+#define Elf_Section unsigned short
+#else
 #define Elf_Section Elf32_Section
-
+#endif
 // Data Structs
 #define Elf_Ehdr Elf32_Ehdr
 #define Elf_Shdr Elf32_Shdr
@@ -121,8 +124,11 @@ int PAGESIZE; // Set at runtime with getpagesize() in melkor.c
 #define Elf_Sxword Elf64_Sxword
 #define Elf_Addr Elf64_Addr
 #define Elf_Off Elf64_Off
+#ifdef BSD
+#define Elf_Section unsigned short
+#else
 #define Elf_Section Elf64_Section
-
+#endif
 // Data Structs
 #define Elf_Ehdr Elf64_Ehdr
 #define Elf_Shdr Elf64_Shdr

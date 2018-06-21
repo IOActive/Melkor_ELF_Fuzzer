@@ -7,6 +7,10 @@
 
 #include "melkor.h"
 
+#ifdef BSD
+#define ET_NUM 5
+#endif
+
 #define N_RULES_HDR 19 // Total of fuzzing rules defined for this metadata type
 
 // Array of function pointers. Index zero won't be used. The fuzzing rules start from index 1

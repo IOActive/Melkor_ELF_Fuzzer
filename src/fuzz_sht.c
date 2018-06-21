@@ -8,6 +8,10 @@
 #include "melkor.h"
 #include <sys/stat.h>
 
+#ifdef BSD
+#define SHT_NUM 19
+#endif
+
 #define N_RULES_SHT 37 // Total of fuzzing rules defined for this metadata type
 
 // Array of function pointers. Index zero won't be used. The fuzzing rules start from index 1
