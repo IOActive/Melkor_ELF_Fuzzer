@@ -7,6 +7,12 @@
 
 #include "melkor.h"
 
+#ifdef BSD
+#define ELF64_ST_BIND(info)          ((info) >> 4)
+#define ELF64_ST_TYPE(info)          ((info) & 0xf)
+#define ELF64_ST_INFO(bind, type)    (((bind)<<4)+((type)&0xf))
+#endif
+
 #define N_RULES_SYM 15 // Total of fuzzing rules defined for this metadata type
 
 // Array of function pointers. Index zero won't be used. The fuzzing rules start from index 1

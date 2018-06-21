@@ -9,6 +9,8 @@
 
 #ifdef BSD
 #define DT_NUM 34
+#define SHT_GNU_HASH 0x6ffffff6
+#define DT_GNU_HASH 0x6ffffef5
 #endif
 
 #define N_RULES_DYN 18 // Total of fuzzing rules defined for this metadata type
