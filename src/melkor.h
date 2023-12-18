@@ -39,7 +39,7 @@
 */
 typedef int (*func_ptr)(void);
 
-int PAGESIZE; // Set at runtime with getpagesize() in melkor.c
+extern int PAGESIZE; // Set at runtime with getpagesize() in melkor.c
 
 #ifndef PT_GNU_STACK
 #define PT_GNU_STACK 0x6474e551 // Indicates executable stack
@@ -112,7 +112,7 @@ int PAGESIZE; // Set at runtime with getpagesize() in melkor.c
 
 #define HEX "%.8x"
 
-#elif defined(__x86_64__)       /**** x86_64 ****/
+#elif defined(__x86_64__) || defined(__aarch64__)      /**** x86_64 ****/
 // Data Types
 #define Elf_Half Elf64_Half
 #define Elf_Word Elf64_Word

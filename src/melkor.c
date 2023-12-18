@@ -54,6 +54,7 @@ Elf_Off		elfshstrtab_offset = 0, orcshstrtab_offset = 0, linkstrtab_offset = 0;
 Elf_Shdr	*orcOrigSHT;
 Elf_Phdr	*orcOrigPHT;
 Elf_Dyn		*elfOrigDYN;
+int PAGESIZE;
 
 extern int errno;
 

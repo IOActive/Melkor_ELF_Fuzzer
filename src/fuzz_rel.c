@@ -82,13 +82,13 @@ int rel2(void)
 		if(orcSHT->sh_type == SHT_REL)
 #if defined(__i386__)
 			orcREL->r_info = getElf_Word();
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 			orcREL->r_info = getElf_Xword();
 #endif
 		else
 #if defined(__i386__)
 			orcRELA->r_info = getElf_Word();
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 			orcRELA->r_info = getElf_Xword();
 #endif
 	}
@@ -108,7 +108,7 @@ int rel3(void)
 
 	// r_addend is a Sword (Signed Word)
 	if(rand() % 2){ // 75% chance to set r_addend to a negative number > 0x7fffffff
-#if defined(__x86_64__)
+#if defined(__x86_64__) || defined(__aarch64__)
 		if(rand() % 2)
 			orcRELA->r_addend = 0x8000000000000000 + (rand() % 0x7fffffff);
 		else
