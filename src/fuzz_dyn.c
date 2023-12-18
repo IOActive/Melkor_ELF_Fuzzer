@@ -188,7 +188,7 @@ int dyn8(void)
 
 #if defined(__i386__)
 	Elf_Word d_val;
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 	Elf_Xword d_val;
 #endif
 
@@ -268,7 +268,7 @@ int dyn11(void)
 
 #if defined(__i386__)
 	orcDYN->d_un.d_val = DT_RELA;
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 	orcDYN->d_un.d_val = DT_REL;
 #endif
 
@@ -316,7 +316,7 @@ int dyn13(void)
 
 #if defined(__i386__)
 	Elf_Sword d_tag;
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 	Elf_Sxword d_tag;
 #endif
 
@@ -327,7 +327,7 @@ int dyn13(void)
 	} else
 #if defined(__i386__)
 		d_tag = getElf_Word();
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 		d_tag = getElf_Xword();
 #endif
 
@@ -351,7 +351,7 @@ int dyn14(void)
 
 #if defined(__i386__)
 	Elf_Sword d_tag;
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 	Elf_Sxword d_tag;
 #endif
 
@@ -365,7 +365,7 @@ int dyn14(void)
 	} else
 #if defined(__i386__)
 		d_tag = getElf_Word();
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 		d_tag = getElf_Xword();
 #endif
 
@@ -386,7 +386,7 @@ int dyn15(void)
 
 #if defined(__i386__)
 	Elf_Sword d_tag;
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 	Elf_Sxword d_tag;
 #endif
 
@@ -397,7 +397,7 @@ int dyn15(void)
 	} else
 #if defined(__i386__)
 		d_tag = getElf_Word();
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 		d_tag = getElf_Xword();
 #endif
 
@@ -461,7 +461,7 @@ int dyn17(void)
 
 #if defined(__i386__)
 	Elf_Word d_val;
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 	Elf_Xword d_val;
 #endif
 
@@ -474,7 +474,7 @@ int dyn17(void)
 
 #if defined(__i386__)
 		d_val += 8; // A ptr in 64-bit is 8 bytes. Add 8 to 32-bit ELF
-#elif defined(__x86_64__)
+#elif defined(__x86_64__) || defined(__aarch64__)
 		d_val += 4; // Vice versa
 #endif
 	}
@@ -493,7 +493,7 @@ int dyn18(void)
 
 	// d_tag is a Sword (Signed Word)
 	if(rand() % 2){ // 50% chance to set d_tag to a negative number > 0x7fffffff
-#if defined(__x86_64__)
+#if defined(__x86_64__) || defined(__aarch64__)
 		if(rand() % 2)
 			orcDYN->d_tag = 0x8000000000000000 + (rand() % 0x7fffffff);
 		else
